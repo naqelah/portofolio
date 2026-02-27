@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akhna Khoirul Aqila | Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="ico.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #15173D;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        #cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(228, 145, 201, 0.15) 0%, rgba(152, 37, 152, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+        }
+
+        .glass-nav {
+            background: rgba(21, 23, 61, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: floating 4s ease-in-out infinite; }
+
+        .card-modern {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .card-modern:hover {
+            transform: translateY(-15px) scale(1.02);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #E491C9;
+            box-shadow: 0 25px 50px -12px rgba(152, 37, 152, 0.5);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(228, 145, 201, 0.3);
+        }
+
+        .btn-premium {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(90deg, #982598, #E491C9);
+            transition: all 0.3s ease;
+        }
+        .btn-premium::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+        .btn-premium:hover::before { left: 100%; }
+        .btn-premium:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(152, 37, 152, 0.4); }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @media (max-width: 768px) {
+            #cursor-glow { display: none; }
+            .mobile-menu-active {
+                transform: translateX(0) !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor-glow"></div>
+
+    <nav class="fixed w-full z-[100] glass-nav border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2 group cursor-pointer transition hover:scale-105">
+                <div class="p-2 bg-gradient-to-br from-[#982598] to-[#E491C9] rounded-xl animate-pulse">
+                    <i data-lucide="cat" class="w-6 h-6 text-white"></i>
+                </div>
+                <div class="text-xl font-bold tracking-tighter uppercase">Naaqelah.</div>
+            </div>
+
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#home" class="hover:text-[#E491C9] transition duration-300">Home</a>
+                <a href="#about" class="hover:text-[#E491C9] transition duration-300">About</a>
+                <a href="#projects" class="hover:text-[#E491C9] transition duration-300">Projects</a>
+                <a href="#contact" class="hover:text-[#E491C9] transition duration-300">Contact</a>
+            </div>
+
+            <button class="md:hidden text-white" id="menu-btn">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="fixed inset-0 bg-[#15173D] z-[99] flex flex-col items-center justify-center space-y-8 text-2xl font-bold transition-transform duration-500 translate-x-full md:hidden">
+            <button class="absolute top-6 right-6" id="close-btn">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+            <a href="#home" class="mobile-link">Home</a>
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#projects" class="mobile-link">Projects</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
+        <div class="text-center z-10 max-w-4xl">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="text-[#E491C9] font-medium tracking-[0.3em] mb-4 uppercase text-[10px] md:text-xs opacity-80">Design • Strategy • Interaction</h2>
+                <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 leading-tight tracking-tight">
+                    Hi, I'm <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#E491C9] via-[#982598] to-[#E491C9] bg-[length:200%_auto] animate-[gradient_3s_linear_infinite] text-glow">
+                        Akhna Khoirul Aqila
+                    </span>
+                </h1>
+            </div>
+            
+            <p class="text-base md:text-xl text-gray-400 mb-10 leading-relaxed max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                I am a UI/UX Designer and Front-End Developer dedicated to designing and developing modern, responsive, and user-oriented digital experiences.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center" data-aos="fade-up" data-aos-delay="400">
+                <a href="#projects" class="w-full sm:w-auto btn-premium px-10 py-4 rounded-full font-bold text-center">View Projects</a>
+                <a href="#contact" class="w-full sm:w-auto px-10 py-4 rounded-full border border-white/20 font-bold hover:bg-white/5 transition flex items-center justify-center gap-2 text-center">
+                    Let's Talk <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute top-1/4 left-10 animate-float opacity-10 hidden lg:block">
+            <i data-lucide="figma" class="w-16 h-16 text-[#E491C9]"></i>
+        </div>
+        <div class="absolute bottom-1/4 right-10 animate-float opacity-10 hidden lg:block" style="animation-delay: 1s;">
+            <i data-lucide="layers" class="w-20 h-20 text-[#982598]"></i>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 md:py-32 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+            <div class="relative flex justify-center" data-aos="zoom-in-right">
+                <div class="w-full max-w-[320px] md:max-w-md aspect-[4/5] rounded-[30px] md:rounded-[40px] bg-gradient-to-br from-[#0000] to-[#15173D] overflow-hidden rotate-2 hover:rotate-0 transition-transform duration-700 shadow-2xl">
+                    <img src="image.jpg" alt="About" class="w-full h-full object-cover mix-blend-overlay hover:mix-blend-normal transition duration-500">
+                </div>
+                <div class="absolute -bottom-6 -right-6 w-32 h-32 md:w-40 md:h-40 bg-[#E491C9] rounded-full blur-[80px] opacity-20 animate-pulse"></div>
+            </div>
+            
+            <div data-aos="fade-left" class="text-center md:text-left">
+                <span class="text-[#E491C9] font-bold text-sm tracking-widest uppercase">My Philosophy</span>
+                <h3 class="text-3xl md:text-4xl font-bold mt-4 mb-8 leading-tight italic">"Good design is obvious. <br class="hidden md:block">Great design is <span class="text-[#982598]">transparent.</span>"</h3>
+                <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                    I believe strong design begins with empathy. Through in-depth research and continuous iteration, I create interfaces that are not only visually appealing, but also functional.
+                </p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#E491C9] transition">
+                        <h4 class="font-bold text-[#E491C9]">User-Centered</h4>
+                        <p class="text-sm text-gray-500">Always prioritizing user needs in every pixel.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#E491C9] transition">
+                        <h4 class="font-bold text-[#E491C9]">Scalable System</h4>
+                        <p class="text-sm text-gray-500">Building well-organized and consistent design systems.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#E491C9] transition">
+                        <h4 class="font-bold text-[#E491C9]">Creative Thinking</h4>
+                        <p class="text-sm text-gray-500">Bringing fresh ideas to enhance user engagement.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#E491C9] transition">
+                        <h4 class="font-bold text-[#E491C9]">Consistent Experience</h4>
+                        <p class="text-sm text-gray-500">Maintaining harmony across all design components.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 md:py-32 px-6 bg-[#1a1c47]">
+        <div class="max-w-7xl mx-auto mb-16 text-center" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Masterpieces</h2>
+            <div class="w-20 h-1 bg-[#E491C9] mx-auto rounded-full"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="card-modern rounded-[35px] overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
+                <div class="relative h-64 md:h-72 overflow-hidden">
+                    <img src="bank.png" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#15173D] to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end p-8">
+                        <span class="text-sm font-bold tracking-widest uppercase">Fintech</span>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <h4 class="text-xl md:text-2xl font-bold mb-3">NaBank - Loan Management</h4>
+                    <p class="text-gray-400 text-sm mb-6">A modern financial platform that simplifies complex transactions through a clean and intuitive interface.</p>
+                    <a href="https://naqelah.github.io/NaBank---Digital-Banking-Loan-Management-Platform/" class="text-[#E491C9] font-bold inline-flex items-center group-hover:gap-3 transition-all italic">
+                        Explore Case Study <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-modern rounded-[35px] overflow-hidden group" data-aos="fade-up" data-aos-delay="300">
+                <div class="relative h-64 md:h-72 overflow-hidden">
+                    <img src="flower.png" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#15173D] to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end p-8">
+                        <span class="text-sm font-bold tracking-widest uppercase">E-Commerce</span>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <h4 class="text-xl md:text-2xl font-bold mb-3">Blossom by Nana</h4>
+                    <p class="text-gray-400 text-sm mb-6">A boutique floral e-commerce merging high-quality visual storytelling with a seamless booking experience.</p>
+                    <a href="https://naqelah.github.io/flower-shop/" class="text-[#E491C9] font-bold inline-flex items-center group-hover:gap-3 transition-all italic">
+                        Explore Case Study <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-modern rounded-[35px] overflow-hidden group" data-aos="fade-up" data-aos-delay="500">
+                <div class="relative h-64 md:h-72 overflow-hidden">
+                    <img src="mockup.png" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#15173D] to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end p-8">
+                        <span class="text-sm font-bold tracking-widest uppercase">Environment</span>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <h4 class="text-xl md:text-2xl font-bold mb-3">Scrubix Digital Platform</h4>
+                    <p class="text-gray-400 text-sm mb-6">A front-end website designed to raise public awareness about environmental cleanliness.</p>
+                    <button class="text-[#E491C9] font-bold inline-flex items-center group-hover:gap-3 transition-all italic">
+                        Explore Case Study <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div> <br>
+
+        <div class="max-w-7xl mx-auto mb-16 text-center" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">More Projects Coming Soon...</h2>
+            <div class="w-20 h-1 bg-[#E491C9] mx-auto rounded-full"></div>
+        </div>
+    </section>
+
+<section id="contact" class="py-32 px-6 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#982598]/10 rounded-full blur-[120px] -z-10"></div>
+        
+        <div class="max-w-4xl mx-auto text-center z-10 relative">
+            <div class="inline-flex p-4 bg-white/5 rounded-3xl border border-white/10 mb-8" data-aos="zoom-in">
+                 <i data-lucide="cat" class="text-[#E491C9] w-10 h-10 animate-bounce"></i>
+            </div>
+            
+            <h2 class="text-4xl md:text-6xl font-bold mb-8 tracking-tight" data-aos="fade-up">
+                Let's build something <br> 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#E491C9] to-[#982598]">extraordinary</span> together.
+            </h2>
+            
+            <div data-aos="fade-up" data-aos-delay="200">
+                <p class="text-gray-400 mb-2 text-sm uppercase tracking-[0.2em]">Drop me a message</p>
+                <a href="mailto:khoirulaqila@email.com" class="text-white hover:text-[#E491C9] transition-all duration-300 mb-12 block italic underline decoration-[#982598] text-2xl md:text-3xl font-light">
+                    akhnakhoirul2806@gmail.com
+                </a>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-5" data-aos="fade-up" data-aos-delay="400">
+               <a href="https://www.instagram.com/naaqelah?igsh=MTdjdmo0MWxhNzBwYw==" title="Instagram" class="w-14 h-14 rounded-2xl card-modern flex items-center justify-center text-white hover:text-[#E491C9] hover:border-[#E491C9] transition-all duration-300" target="_blank" rel="noopener noreferrer">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+                <a href="mailto:akhnakhoirul2806@gmail.com" title="Email" class="w-14 h-14 rounded-2xl card-modern flex items-center justify-center text-white hover:text-[#E491C9] hover:border-[#E491C9] transition-all duration-300">
+                    <i data-lucide="mail" class="w-6 h-6"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/akhnakhoirulaqila?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" title="LinkedIn" class="w-14 h-14 rounded-2xl card-modern flex items-center justify-center text-white hover:text-[#E491C9] hover:border-[#E491C9] transition-all duration-300">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                </a>
+                <a href="https://github.com/naqelah" title="GitHub" class="w-14 h-14 rounded-2xl card-modern flex items-center justify-center text-white hover:text-[#E491C9] hover:border-[#E491C9] transition-all duration-300">
+                    <i data-lucide="github" class="w-6 h-6"></i>
+                </a>
+                <a href="https://medium.com/@naaqelah" title="Medium" class="w-14 h-14 rounded-2xl card-modern flex items-center justify-center text-white hover:text-[#E491C9] hover:border-[#E491C9] transition-all duration-300">
+                    <i data-lucide="book-open" class="w-6 h-6"></i>
+                </a>
+               <a href="https://gold-cardboard-0f2.notion.site/Nana-Learning-Notes-Hub-2f0df76e15398174a72de4e691237a68?source=copy_link" 
+                    title="Notion" 
+                    class="w-14 h-14 rounded-2xl card-modern flex items-center justify-center text-white hover:text-[#E491C9] hover:border-[#E491C9] transition-all duration-300">
+                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 fill-current">
+                            <path d="M4.459 4.211c.147.115.304.288.544.509L8.136 7.54V20.21l-3.328-1.928a1.275 1.275 0 0 1-.617-1.092V5.151c0-.43.34-.725.753-.787.214-.03.353.03.515.147zm15.421 1.765c.491.312.753.864.753 1.458v11.961a1.328 1.328 0 0 1-.617 1.137l-3.303 1.942-5.462-3.218V8.163l3.657-2.188c.201-.12.443-.191.688-.191.246 0 .491.071.708.203l3.579 2.088zM15.405 9.475l-2.031 1.214v7.711l2.031 1.192V9.475zm-7.268-1.93l2.031 1.193v10.158l-2.031-1.21V7.545z"/>
+                        </svg>
+                    </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 md:py-20 text-center border-t border-white/5">
+        <div class="flex items-center justify-center space-x-3 mb-6" data-aos="zoom-in">
+            <span class="text-lg md:text-2xl font-bold tracking-widest uppercase">AKHNA KHOIRUL AQILA</span>
+        </div>
+        <p class="text-gray-500 text-xs md:text-sm">© 2026 Crafted with Passion & Precision.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            disable: 'mobile'
+        });
+
+        lucide.createIcons();
+
+        const glow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        const toggleMenu = () => mobileMenu.classList.toggle('mobile-menu-active');
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        document.addEventListener('mousedown', () => {
+            glow.style.width = '500px';
+            glow.style.height = '500px';
+        });
+        document.addEventListener('mouseup', () => {
+            glow.style.width = '400px';
+            glow.style.height = '400px';
+        });
+    </script>
+</body>
+</html>
